@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: lightgray;
+      }
+      .container {
+        width: 500px;
+        height: 400px;
+        border: 5px solid black;
+        border-radius: 20px;
+        background-color: white;
+        margin: 50px auto;
+        box-shadow: 0px 0px 20px 0px black;
+        position: relative;
+        overflow: hidden;
+      }
+      .ball {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+      }
+      .flipper {
+        width: 50px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        transform: rotate(-45deg);
+        cursor: pointer;
+      }
+      .flipper:before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-top: 2px solid black;
+        border-left: 2px solid black;
+        position: absolute;
+        bottom: 80px;
+        left: 15px;
+        transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="ball"></div>
+      <div class="flipper"></div>
+    </div>
+    
+    <script>
+      const ball = document.querySelector('.ball');
+      const flipper = document.querySelector('.flipper');
+      let speedX = 5;
+      let speedY = 5;
+      
+      function moveBall() {
+        let x = ball.offsetLeft + speedX;
+        let y = ball.offsetTop + speedY;
+        
+        if (x > 480 || x < 0) {
+          speedX = -speedX;
+        }
+        if (y > 380 || y < 0) {
+          speedY = -speedY;
+        }
+        
+        ball.style.left = x + 'px';
+        ball.style.top = y + 'px';
+        
+        requestAnimationFrame(moveBall);
+      }
+      
+      flipper.addEventListener('click', function() {
+        speedY = -speedY;
+      });
+      
+      moveBall();
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+@media screen {
+    
+}c
+body{
+    background-color: rgb(0, 245, 163) ;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+color: rgb(255, 0, 0);
+background-color: aqua;
+}
+p{
+text-align: justify;
+}
